@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
+use App\Http\Controllers\TarefaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +23,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// O Controllers TarefaController foi gerado especificando a sua model Tarefa
+// php artisan make:controller --resource TarefaController --model=Tarefa
+Route::resource('/tarefa', TarefaController::class);
