@@ -22,13 +22,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
+        ->name('home')
+        ->middleware('verified');
 
 // O Controllers TarefaController foi gerado especificando a sua model Tarefa
 // php artisan make:controller --resource TarefaController --model=Tarefa
-Route::resource('/tarefa', TarefaController::class);
+Route::resource('/tarefa', TarefaController::class)
+        ->middleware('verified');
 
 Route::get('/mensagem-teste', function() {
     return new MensagemTesteMail();
