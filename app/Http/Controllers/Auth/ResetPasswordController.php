@@ -27,4 +27,17 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    /*
+        Trazendo o método rules() da trait ResetsPasswords nível do framework para o nível do Controller,
+        conseguimos manter as modificações caso haja a necessidade de upgrade ou downgrade na versão do Laravel
+    */
+    protected function rules()
+    {
+        return [
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:6',
+        ];
+    }
 }
