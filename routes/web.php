@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\TarefaController;
+use App\Mail\MensagemTesteMail;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +29,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // O Controllers TarefaController foi gerado especificando a sua model Tarefa
 // php artisan make:controller --resource TarefaController --model=Tarefa
 Route::resource('/tarefa', TarefaController::class);
+
+Route::get('/mensagem-teste', function() {
+    return new MensagemTesteMail();
+    // Mail::to('paulocaetanomt88@gmail.com')->send(new MensagemTesteMail());
+    // return "Email enviado!";
+});
