@@ -50,10 +50,24 @@ class TarefaController extends Controller
     {
         // recebendo os campos 'tarefa' e 'data_final' vindos do formulário
         $dados = $request->all('tarefa', 'data_final');
+
+        $regras = [
+            'tarefa' => 'required|min:6|max:255',
+            'data_final' => 'required|date'
+        ];
+
+        $feedback = [
+            'required' => 'O campo :attribute é necessário.',
+            'date' => 'A data não está em formato válido',
+            'tarefa.min' => 'O título da tarefa precisa ter no mínimo 6 caracteres',
+            'tarefa.max' => 'O título da tarefa precisa ter no máximo 255 caracteres'
+        ];
         
         // recuperando o id e o email do usuário logado vindos da session e definindo em suas respectivas variáveis
         $dados['user_id'] = auth()->user()->id;
         $destinatario = auth()->user()->email;
+
+        $request->validate($regras, $feedback);
         
         // criando a tarefa no banco de dados
         $tarefa = Tarefa::create($dados);
@@ -84,7 +98,7 @@ class TarefaController extends Controller
      */
     public function edit(Tarefa $tarefa)
     {
-        //
+        
     }
 
     /**
@@ -96,7 +110,23 @@ class TarefaController extends Controller
      */
     public function update(Request $request, Tarefa $tarefa)
     {
-        //
+        $regras = [
+            'tarefa' => 'required|min:6|max:255',
+            'data_final' => 'required|date'
+        ];
+
+        $feedback = [
+            'required' => 'O campo :attribute é necessário.',
+            'date' => 'A data não está em formato válido',
+            'tarefa.min' => 'O título da tarefa precisa ter no mínimo 6 caracteres',
+            'tarefa.max' => 'O título da tarefa precisa ter no máximo 255 caracteres'
+        ];
+
+        $request->validate($regras, $feedback);
+
+        $tarefa->update($request->all());
+
+        return redirect()->route('tarefa.show', ['tarefa'=>$tarefa->id]);
     }
 
     /**
