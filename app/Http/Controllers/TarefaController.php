@@ -98,7 +98,7 @@ class TarefaController extends Controller
      */
     public function edit(Tarefa $tarefa)
     {
-        
+        return view('tarefa.edit', ['tarefa' => $tarefa]);
     }
 
     /**

@@ -15,6 +15,8 @@
                             <th scope="col">Usuário</th>
                             <th scope="col">Tarefa</th>
                             <th scope="col" class="d-flex justify-content-center">Data Final para Conclusão</th>
+                            <th scope="col">Editar</th>
+                            <th scope="col">Deletar</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -24,6 +26,7 @@
                                 <td align="center">{{ $tarefa->user_id }}</td>
                                 <td>{{ $tarefa->tarefa }}</td>
                                 <td class="d-flex justify-content-center">{{ date('d/m/Y', strtotime($tarefa->data_final)) }}</td>
+                                <td><a href="{{route('tarefa.edit', $tarefa->id)}}">[e]</a></td>
                             </tr>
                         @endforeach
                         </tbody>
