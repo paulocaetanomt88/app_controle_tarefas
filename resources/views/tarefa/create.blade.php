@@ -14,18 +14,8 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('tarefa.store') }}">
-                        @csrf
-                        <div class="mb-3">
-                          <label class="form-label">Tarefa</label>
-                          <input type="text" class="form-control" name="tarefa">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Data final para conclusão:</label>
-                            <input type="date" class="form-control" name="data_final">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Registrar</button>
-                      </form>
+                    @component('tarefa._components.form_create_edit')
+                    @endcomponent
                 </div>
             </div>
         </div>
