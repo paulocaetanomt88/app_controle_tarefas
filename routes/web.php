@@ -23,10 +23,15 @@ Route::get('/', function () {
 });
 
 Auth::routes(['verify' => true]);
+/*
+A rota /home foi ajustada no arquivo RouteServiceProvider.php:
+para: public const HOME = '/tarefa';
 
+por isso foi comentada aqui no arquivo web
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
         ->name('home')
         ->middleware('verified');
+*/
 
 // O Controllers TarefaController foi gerado especificando a sua model Tarefa
 // php artisan make:controller --resource TarefaController --model=Tarefa
