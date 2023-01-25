@@ -55,11 +55,20 @@ class TarefaController extends Controller
      */
     public function store(Request $request)
     {
-        $tarefa = Tarefa::create($request->all());
+        // recebendo os campos 'tarefa' e 'data_final' vindos do formulário
+        $dados = $request->all('tarefa', 'data_final');
+        
+        // recuperando o id e o email do usuário logado vindos da session e definindo em suas respectivas variáveis
+        $dados['user_id'] = auth()->user()->id;
         $destinatario = auth()->user()->email;
+        
+        // criando a tarefa no banco de dados
+        $tarefa = Tarefa::create($dados);
 
+        // enviando email para destinatário  a nova tarefa criada
         Mail::to($destinatario)->send(new NovaTarefaMail($tarefa));
 
+        // redirecionando o navegador para a rota de exibição de tarefa passando o id da tarefa
         return redirect()->route('tarefa.show', ['tarefa'=>$tarefa->id]);
     }
 

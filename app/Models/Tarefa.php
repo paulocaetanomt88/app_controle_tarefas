@@ -9,5 +9,5 @@ class Tarefa extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['tarefa', 'data_final'];
+    protected $fillable = ['user_id', 'tarefa', 'data_final'];
 }
