@@ -27,6 +27,13 @@
                                 <td>{{ $tarefa->tarefa }}</td>
                                 <td class="d-flex justify-content-center">{{ date('d/m/Y', strtotime($tarefa->data_final)) }}</td>
                                 <td><a href="{{route('tarefa.edit', $tarefa->id)}}">[e]</a></td>
+                                <td>
+                                  <form id="form_{{$tarefa->id}}" method="POST" action="{{ route('tarefa.destroy', ['tarefa'=>$tarefa->id])}}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <a href="#" onclick="document.getElementById('form_{{$tarefa->id}}').submit()">[x]</a>
+                                  </form>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
