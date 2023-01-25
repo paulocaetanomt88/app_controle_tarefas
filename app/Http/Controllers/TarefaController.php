@@ -23,18 +23,11 @@ class TarefaController extends Controller
      */
     public function index()
     {
-        /**
-         * Outra forma de verificar se o usuário está logado
-         * $id = auth()->user()->id;
-         * $nome = auth()->user()->name;
-         * $email = auth()->user()->email;
-        */
+        $user_id = auth()->user()->id;
+        
+        $tarefas = Tarefa::where('user_id', $user_id)->get();
 
-        $id = Auth::user()->id;
-        $nome = Auth::user()->name;
-        $email = Auth::user()->email;
-
-        return "ID: $id | Nome: $nome | Email: $email";
+        return view('tarefa.index', ['tarefas'=>$tarefas]);
     }
 
     /**
