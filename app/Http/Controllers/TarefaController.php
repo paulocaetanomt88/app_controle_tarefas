@@ -98,6 +98,12 @@ class TarefaController extends Controller
      */
     public function edit(Tarefa $tarefa)
     {
+        $id_usuario = auth()->user()->id;
+
+        if ($id_usuario !== $tarefa->user_id) {
+            die(view('acesso-negado'));
+        }
+
         return view('tarefa.edit', ['tarefa' => $tarefa]);
     }
 
@@ -110,6 +116,12 @@ class TarefaController extends Controller
      */
     public function update(Request $request, Tarefa $tarefa)
     {
+        $id_usuario = auth()->user()->id;
+
+        if ($id_usuario !== $tarefa->user_id) {
+            die(view('acesso-negado'));
+        }
+
         $regras = [
             'tarefa' => 'required|min:6|max:255',
             'data_final' => 'required|date'
