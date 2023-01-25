@@ -26,9 +26,25 @@
                                 <td class="d-flex justify-content-center">{{ date('d/m/Y', strtotime($tarefa->data_final)) }}</td>
                             </tr>
                         @endforeach
-                          
                         </tbody>
                       </table>
+                      <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                          <li class="page-item {{ $tarefas->currentPage() == 1 ? 'disabled' : '' }}">
+                            <a class="page-link " href="{{ $tarefas->previousPageUrl() }}" >Anterior</a>
+                          </li>
+
+                          @for ($i = 1; $i <= $tarefas->lastPage(); $i++)
+                            <li class="page-item {{ $tarefas->currentPage() == $i ? 'active' : '' }}" >
+                              <a class="page-link" href="{{ $tarefas->url($i) }}">{{ $i }}</a>
+                            </li>
+                          @endfor
+
+                          <li class="page-item {{ $tarefas->currentPage() == $tarefas->lastPage() ? 'disabled' : '' }}">
+                            <a class="page-link" href="{{ $tarefas->nextPageUrl() }}">Próxima</a>
+                          </li>
+                        </ul>
+                      </nav>
                 </div>
             </div>
         </div>
