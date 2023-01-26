@@ -5,8 +5,9 @@ namespace App\Exports;
 use App\Models\Tarefa;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithMapping;
 
-class TarefasExport implements FromCollection, WithHeadings
+class TarefasExport implements FromCollection, WithHeadings, WithMapping
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -17,11 +18,20 @@ class TarefasExport implements FromCollection, WithHeadings
          // return auth()->user()->tarefas()->get();
         
          // Forma usando ORM do Laravel Model::where('campo_da_tabela', valor) 
-        return Tarefa::where('user_id', auth()->user()->id)->get(['id','user_id','tarefa','data_final','created_at','updated_at']);
+        return Tarefa::where('user_id', auth()->user()->id)->get();
     }
 
     public function headings(): array // declarando o tipo de retorno (tipo array)
     {
-        return ['ID da Tarefa','ID do Usuário','Tarefa', 'Data final para conclusão','Criada em','Atualizada em'];
+        return ['ID da Tarefa','Tarefa', 'Data final para conclusão'];
+    }
+
+    public function map($linha): array
+    {
+        return [
+            $linha->id,
+            ucfirst($linha->tarefa),
+            date('d/m/Y',strtotime($linha->data_final))
+        ];
     }
 }
