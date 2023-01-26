@@ -44,4 +44,4 @@ Route::get('/mensagem-teste', function() {
     // return "Email enviado!";
 });
 
-Route::get('/tarefas/exportar', [TarefaController::class, 'exportar'])->name('tarefas.exportar');
+Route::get('/tarefas/exportar/{extensao}', [TarefaController::class, 'exportar'])->name('tarefas.exportar');

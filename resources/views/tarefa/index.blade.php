@@ -7,7 +7,9 @@
             <div class="card">
                 <div class="card-header">
                   Tarefas
-                  <a href="{{ route('tarefa.create') }}" class="float-right pl-4">Registrar Nova</a> <a href="{{ route('tarefas.exportar') }}" class="float-right pl-4">Exportar para XLSX</a>
+                  <a href="{{ route('tarefa.create') }}" class="float-right pl-4">Registrar Nova</a>
+                  <a href="{{ route('tarefas.exportar', ['extensao'=>'csv']) }}" class="float-right pl-4">Exportar para CSV</a>
+                  <a href="{{ route('tarefas.exportar', ['extensao'=>'xlsx']) }}" class="float-right pl-4">Exportar para XLSX</a>
                 </div>
 
                 <div class="card-body">
