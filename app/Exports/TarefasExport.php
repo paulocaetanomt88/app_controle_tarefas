@@ -4,8 +4,6 @@ namespace App\Exports;
 
 use App\Models\Tarefa;
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Excel;
-
 class TarefasExport implements FromCollection
 {
     /**
@@ -13,6 +11,10 @@ class TarefasExport implements FromCollection
     */
     public function collection()
     {
-        return Tarefa::all();
+        //Outra forma usando o relacionamento entre as models User e Tarefa:
+         // return auth()->user()->tarefas()->get();
+        
+         // Forma usando ORM do Laravel Model::where('campo_da_tabela', valor) 
+        return Tarefa::where('user_id', auth()->user()->id)->get();
     }
 }
