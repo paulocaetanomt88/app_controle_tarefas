@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Exports\TarefasExport;
-use App\Http\Controllers\Auth\LoginController;
 use App\Mail\NovaTarefaMail;
 use App\Models\Tarefa;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Session;
 use Maatwebsite\Excel\Facades\Excel;
+
 
 class TarefaController extends Controller
 {
@@ -166,14 +164,12 @@ class TarefaController extends Controller
 
     public function exportar($extensao)
     {
-        if($extensao == 'xlsx') {
-            $formato  = 'xlsx';
-        } elseif($extensao == 'csv') {
-            $formato = 'csv';
+        if(in_array($extensao, ['xlsx', 'csv', 'pdf'])) {
+            return Excel::download(new TarefasExport, 'tarefas.'.$extensao);
         } else {
             die('Formato inválido!');
         }
 
-        return Excel::download(new TarefasExport, 'tarefas.'.$formato);
+        return redirect()->route('tarefa.index');
     }
 }

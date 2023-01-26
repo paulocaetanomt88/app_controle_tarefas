@@ -6,10 +6,16 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                  Tarefas
-                  <a href="{{ route('tarefa.create') }}" class="float-right pl-4">Registrar Nova</a>
-                  <a href="{{ route('tarefas.exportar', ['extensao'=>'csv']) }}" class="float-right pl-4">Exportar para CSV</a>
-                  <a href="{{ route('tarefas.exportar', ['extensao'=>'xlsx']) }}" class="float-right pl-4">Exportar para XLSX</a>
+                  <div class="d-flex">
+                    <div class="mr-auto p-2"><h4>Tarefas</h4></div>
+                    <div class="p-2"><a  href="{{ route('tarefa.create') }}">Registrar Nova</a></div>
+                  </div>
+                  <div class="d-flex justify-content-end">
+                    <div class="p-2">Exportar para:</div>
+                    <div class="p-2"><a href="{{ route('tarefas.exportar', ['extensao'=>'csv']) }}" >CSV</a></div>
+                    <div class="p-2"><a href="{{ route('tarefas.exportar', ['extensao'=>'xlsx']) }}" >XLSX</a></div>
+                    <div class="p-2"><a href="{{ route('tarefas.exportar', ['extensao'=>'pdf']) }}" >PDF</a></div>
+                  </div>
                 </div>
 
                 <div class="card-body">
