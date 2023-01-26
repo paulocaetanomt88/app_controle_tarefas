@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Tarefas <a href="{{ route('tarefa.create') }}" class="float-right">Registrar Nova</a></div>
+                <div class="card-header">
+                  Tarefas
+                  <a href="{{ route('tarefa.create') }}" class="float-right pl-4">Registrar Nova</a> <a href="{{ route('tarefas.exportar') }}" class="float-right pl-4">Exportar para XLSX</a>
+                </div>
 
                 <div class="card-body">
                     <table class="table">

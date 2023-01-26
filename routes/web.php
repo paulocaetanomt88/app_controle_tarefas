@@ -43,3 +43,5 @@ Route::get('/mensagem-teste', function() {
     // Mail::to('paulocaetanomt88@gmail.com')->send(new MensagemTesteMail());
     // return "Email enviado!";
 });
+
+Route::get('/tarefas/exportar', [TarefaController::class, 'exportar'])->name('tarefas.exportar');
