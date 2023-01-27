@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\TarefasExport;
 use App\Mail\NovaTarefaMail;
 use App\Models\Tarefa;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
@@ -174,10 +175,16 @@ class TarefaController extends Controller
 
     public function dompdf()
     {
-        $tarefas = auth()->user()->tarefas()->get();
+        // $tarefas = auth()->user()->tarefas()->get();
+        $tarefas = User::find(auth()->user()->id)->tarefas()->get();
 
         $pdf = Pdf::loadView('tarefa.pdf', ['tarefas'=>$tarefas]);
+
+        // tipo de papel: A4
+        // orientação: landscape (paisagem) ou portrait (retrato)
+        $pdf->setPaper('A4', 'portrait');
         
-        return $pdf->download('lista_de_tarefas.pdf');
+        //return $pdf->download('lista_de_tarefas.pdf');
+        return $pdf->stream('lista_de_tarefas.pdf');
     }
 }
