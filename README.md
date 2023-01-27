@@ -1,7 +1,6 @@
 <p align="center"><img src="./imgs/controle_de_tarefas.png" width="800"></p>
 
 ## Controle de Tarefas
-#### [projeto em desenvolvimento]
 
 A aplicação permitirá ao usuário cadastrar, editar, buscar, exibir e deletar os registros de tarefas.
 Para rotas e recursos protegidos serão implementados registro, autenticação e verificação de usuário.
