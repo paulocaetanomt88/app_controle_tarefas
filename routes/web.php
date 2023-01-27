@@ -45,3 +45,4 @@ Route::get('/mensagem-teste', function() {
 });
 
 Route::get('/tarefas/exportar/{extensao}', [TarefaController::class, 'exportar'])->name('tarefas.exportar');
+Route::get('/tarefas/dompdf', [TarefaController::class, 'dompdf'])->name('tarefas.dompdf');

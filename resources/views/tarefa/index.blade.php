@@ -15,6 +15,7 @@
                     <div class="p-2"><a href="{{ route('tarefas.exportar', ['extensao'=>'csv']) }}" >CSV</a></div>
                     <div class="p-2"><a href="{{ route('tarefas.exportar', ['extensao'=>'xlsx']) }}" >XLSX</a></div>
                     <div class="p-2"><a href="{{ route('tarefas.exportar', ['extensao'=>'pdf']) }}" >PDF</a></div>
+                    <div class="p-2"><a href="{{ route('tarefas.dompdf') }}" >PDF V2</a></div>
                   </div>
                 </div>
 
@@ -49,6 +50,7 @@
                         @endforeach
                         </tbody>
                       </table>
+                      
                       <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
                           <li class="page-item {{ $tarefas->currentPage() == 1 ? 'disabled' : '' }}">
@@ -71,4 +73,5 @@
         </div>
     </div>
 </div>
+
 @endsection
