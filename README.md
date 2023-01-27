@@ -22,7 +22,7 @@ abordagem rápida Laravel DOMPDF
 - Ferramenta de administração de BD: HeidiSQL Portable
 - Laragon
 
-<p> Este projeto é um estudo parte do curso Desenvolvimento Web Avançado com PHP, Laravel e Vue.JS (Seção 13 e 14) na plataforma Udemy disponível em: <https://www.udemy.com/course/curso-completo-do-desenvolvedor-laravel/></p>
+<p> Este projeto é um estudo parte do curso Desenvolvimento Web Avançado com PHP, Laravel e Vue.JS (Seção 13 e 14) na plataforma Udemy disponível em: <br> https://www.udemy.com/course/curso-completo-do-desenvolvedor-laravel</p>
 
 ### Os objetivos de aprendizado deste estudo são:
 - Trabalhar com rotas, grupos e com os verbos HTTP 
